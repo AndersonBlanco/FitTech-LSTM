@@ -246,6 +246,3 @@ def runPoseEstimation():
 
     cap.release()
     cv2.destroyAllWindows()
-
-
-runPoseEstimation() 
