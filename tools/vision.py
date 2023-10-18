@@ -5,6 +5,9 @@ from PIL import Image, ImageOps
 import numpy as np
 
 import time 
+
+from model import predict
+
 mp_drawing = mp.solutions.drawing_utils 
 mp_pose = mp.solutions.pose 
 
@@ -233,8 +236,8 @@ def runPoseEstimation():
         frame = cv2.flip(frame, 1)
         try:
             angles, newFrame = drawSkeleton(frame) 
-            print(angles)        
-  
+            p = predict(angles) 
+            newFrame = cv2.putText(newFrame, f"{p}", (25, 25), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,0), 2.5, cv2.LINE_AA)
             cv2.imshow('FitTech', newFrame)
             #time.sleep(5)
         except:
@@ -246,3 +249,5 @@ def runPoseEstimation():
 
     cap.release()
     cv2.destroyAllWindows()
+
+runPoseEstimation()
