@@ -38,9 +38,9 @@ model.add(keras.layers.Dense(3, activation='softmax'))
 model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['categorical_accuracy', "accuracy"])
 
 def train_and_save():
-    checkpoint = ModelCheckpoint('lstm.h5', monitor='loss', verbose = 1, save_best_only= True, mode = 'min')
-    callbacks_list = [checkpoint]
-    model.fit(x_train, y_train, epochs = 25, callbacks=callbacks_list)
+    #checkpoint = ModelCheckpoint('lstm.h5', monitor='loss', verbose = 1, save_best_only= True, mode = 'min')
+    #callbacks_list = [checkpoint]
+    model.fit(x_train, y_train, epochs = 25)
 
     model.save('lstm.h5')
 
@@ -50,3 +50,6 @@ def predict(angles):
     prediction = model.predict(angles)
 
     return prediction
+
+print('starting.....')
+train_and_save()
