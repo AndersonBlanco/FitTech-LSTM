@@ -8,10 +8,13 @@ import time
 
 
 cap = cv2.VideoCapture(0)
+x = 0 
 while True:
     ret, frame = cap.read()
 
-    cv2.imshow(frame)
+    cv2.imshow('Feed', frame)
+    cv2.imwrite(f'../angles/training/jab/imgs/img_{x}', frame)
+    x += 1
 
     if cv2.waitKey(1) == ord('q'):
         break
