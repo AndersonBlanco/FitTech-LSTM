@@ -48,7 +48,9 @@ model = keras.Sequential()
 # output embedding dimension of size 64.
 
 # Add a LSTM layer with 128 internal units.
-model.add(tf.keras.layers.LSTM(128, input_shape=(40,8)))
+model.add(tf.keras.layers.LSTM(128, return_sequences=True, input_shape=(40,8)))
+model.add(tf.keras.layers.LSTM(64, return_sequences=True))
+model.add(tf.keras.layers.LSTM(32))
 
 # Add a Dense layer with 10 units.
 model.add(tf.keras.layers.Dense(3))
