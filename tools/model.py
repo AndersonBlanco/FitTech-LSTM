@@ -57,5 +57,5 @@ def predict(angles):
 
     return prediction
 
-print('starting.....')
+#print('starting.....')
 #train_and_save()

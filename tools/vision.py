@@ -6,7 +6,7 @@ import numpy as np
 
 import time 
 
-from model import predict
+#from model import predict
 
 mp_drawing = mp.solutions.drawing_utils 
 mp_pose = mp.solutions.pose 
@@ -229,16 +229,16 @@ def drawSkeleton(frame):
 
 
 def runPoseEstimation():
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture('../newData/jab/good/video_12.avi')
 
     while True:
         ret, frame = cap.read()
         frame = cv2.flip(frame, 1)
         try:
             angles, newFrame = drawSkeleton(frame) 
-            p = predict(angles) 
+            #p = predict(angles) 
             #print(p)
-            newFrame = cv2.putText(newFrame, f"{p}", (25, 25), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,0), 2.5, cv2.LINE_AA)
+            #newFrame = cv2.putText(newFrame, f"{p}", (25, 25), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,0), 2.5, cv2.LINE_AA)
             cv2.imshow('FitTech', newFrame)
 
         except:
@@ -251,4 +251,4 @@ def runPoseEstimation():
     cap.release()
     cv2.destroyAllWindows()
 
-runPoseEstimation()
+

@@ -6,7 +6,7 @@ import datetime
 import winsound
 #input from my camera
 time.sleep(10)
-winsound.Beep(1000,500)
+#insound.Beep(1000,500)
 print('now')
 infive = datetime.datetime.now() + datetime.timedelta(0,5)
 cap = cv.VideoCapture(0)
@@ -17,37 +17,26 @@ count = 0
 #we need tto use videowritter_fourcc, its our methods of saving vids
 fourcc = cv.VideoWriter_fourcc(*'XVID')
 
-#variable meant to be what we output, we use videowriter 
-out = cv.VideoWriter('jabsWhereTorsoDoesntRotate1.avi', fourcc, 20.0, (640,  480))
+num_videos = 10
 
-#this section is what saves each frame of the video
-#while the camera is opened/ on
-while cap.isOpened():
-    if count == 100:
-        break
+for x in range(num_videos):
+    out = cv.VideoWriter(f'../newData/jab/good/video_{x + 32}.avi', fourcc, 20.0, (640,  480))
+    winsound.Beep(1000,500)
+    for length in range(40):
+        ret, frame = cap.read()
+        if not ret:
+            print("Can't receive frame (stream end?). Exiting ...")
+            break
 
-    #we do cap.read() which analyzes the state of out current frame
+        out.write(frame)
 
-    #if ret is empty exit
-    ret, frame = cap.read()
-    if not ret:
-        print("Can't receive frame (stream end?). Exiting ...")
-        break
-
-    #the current frame is set to flip itself, 0? degrees?
+ 
+        cv.imshow('frame', frame)
+ 
+        if cv.waitKey(1) == ord('q'):
+            break
     
-    # write the flipped frame
-
-    #we add to out our current frame
-    out.write(frame)
-
-    #shows our frame
-    cv.imshow('frame', frame)
-    count+=1
-    #if q is pressed exit
-    if cv.waitKey(1) == ord('q'):
-        break
-# Release everything if job is finished
+ 
 cap.release()
 out.release()
 cv.destroyAllWindows()
