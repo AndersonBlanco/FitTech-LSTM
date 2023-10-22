@@ -4,8 +4,9 @@ from keras.callbacks import ModelCheckpoint
 import sklearn
 import os
 import numpy as np
-import sklearn 
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
 
 def getX_getY(path, label):
     x = []
@@ -43,22 +44,33 @@ def prev_org():
 
 #!IMPORTANT: output shape definition = [good_jab, bad_jab_knee_lvl, bad_jab_rotation]
 model = keras.Sequential()
-model.add(keras.layers.LSTM(64, return_sequences= True, activation='relu', input_shape = (40, 8)))
-model.add(keras.layers.LSTM(128, return_sequences=True, activation='relu'))
-model.add(keras.layers.LSTM(128, return_sequences=False, activation='relu'))
-model.add(keras.layers.Dense(64, activation='relu'))
-model.add(keras.layers.Dense(32, activation='relu'))
-model.add(keras.layers.Dense(3))
+# Add an Embedding layer expecting input vocab of size 1000, and
+# output embedding dimension of size 64.
+
+# Add a LSTM layer with 128 internal units.
+model.add(tf.keras.layers.LSTM(128, input_shape=(40,8)))
+
+# Add a Dense layer with 10 units.
+model.add(tf.keras.layers.Dense(3))
+
 
 model.compile(optimizer = 'adam', loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), metrics = ['categorical_accuracy', "accuracy"])
 
 def train_and_save(x, y, xt, xy):
     checkpoint = ModelCheckpoint('lstm.h5', monitor='loss', verbose = 1, save_best_only= True, mode = 'min')
     callbacks_list = [checkpoint]
-    model.fit(x, y, batch_size=16, epochs = 50, callbacks=callbacks_list)
-    #pred= model.predict(xt)
+    model.fit(x, y, batch_size=16, epochs = 50)
+    '''pred_y= model.predict(xt)
+    pred_fixed=[]
+    for i in range(0, len(pred_y)):
+        if pred_y[i].max() == pred_y[i][0]:
+            pred_fixed.append(0)
+        elif pred_y[i].max() == pred_y[i][1]:
+            pred_fixed.append(1)
+        elif pred_y[i].max() == pred_y[i][2]:
+            pred_fixed.append(2)
+    print(accuracy_score(pred_fixed, xy))'''
     #print(pred)
-    model.save('lstm.h5')
 
 
 def predict(angles):
@@ -89,16 +101,20 @@ x3, y3 = getX_getY('../newData/jab/bad/angles/rotation_lack', 2)
 x3.resize(40, 40, 8)
 y3.resize(40)
 
+
+x = np.concatenate((x,x2,x3), axis=0)
+y = np.concatenate((y,y2,y3), axis=0)
+print(y)
 #print(x.shape)
 
-x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=.2)
+x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=.001)
 
-
+print(x_train.shape)
 #print(x_train.shape)
 
 #jab - bad - knee_lvl
 
-#train_and_save(x_train, y_train, x_test, y_test)
+train_and_save(x_train, y_train, x_test, y_test)
 
-print(x_test[0])
-predict(x_test[0])
+'''print(x_test[0])
+predict(x_test[0])'''
