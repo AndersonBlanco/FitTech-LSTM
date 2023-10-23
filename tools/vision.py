@@ -229,7 +229,7 @@ def drawSkeleton(frame):
 
 
 def runPoseEstimation():
-    cap = cv2.VideoCapture('../newData/jab/good/video_12.avi')
+    cap = cv2.VideoCapture(0)
 
     while True:
         ret, frame = cap.read()
