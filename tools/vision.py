@@ -1,7 +1,7 @@
 import mediapipe as mp
-import cv2 
-import PIL 
-from PIL import Image, ImageOps
+import cv2
+#import PIL 
+#from PIL import Image, ImageOps
 import numpy as np
 
 import time 
@@ -251,4 +251,5 @@ def runPoseEstimation():
     cap.release()
     cv2.destroyAllWindows()
 
+runPoseEstimation()
 
