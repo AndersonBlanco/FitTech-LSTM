@@ -35,7 +35,9 @@ def label(angles):
     elif idx == 6:
         return 'bad upper cut - knee lvl lack', pred_y
     elif idx == 7:
-        return 'bad jab - rotation lack', pred_y
+        return 'bad upper cut - rotation lack', pred_y
+    elif idx == 8:
+        return 'good straight', predy
     
 
 

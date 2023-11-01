@@ -95,6 +95,7 @@ print('starting.....')
 #5 = good upper_cut
 #6 = bad upper_cut - knee lvl
 #7 = bad upper_cut - rotation lack
+#8 = good straight 
 
 #jab - good  
 x, y = getX_getY('../newData/jab/good/angles', 0)
@@ -139,10 +140,15 @@ x8, y8 = getX_getY('../newData/upper_cut/bad/angles/upper_rotation_lack', 7)
 x8.resize(100, 40, 8)
 y8.resize(100)
 
-#x4,x5,x6,x7,x8
-#y4,y5,y6,y7,y8
-x = np.concatenate((x,x2,x3, x4,x5,x6,x7,x8 ), axis=0)
-y = np.concatenate((y,y2,y3, y4,y5,y6,y7,y8), axis=0)
+#good straight
+x9, y9 = getX_getY('../newData/straight_right/good/angles', 8)
+x9.resize(100, 40, 8)
+y9.resize(100)
+
+#x4,x5,x6,x7,x8, x9
+#y4,y5,y6,y7,y8, y9
+x = np.concatenate((x,x2,x3, x4,x5,x6,x7,x8, x9 ), axis=0)
+y = np.concatenate((y,y2,y3, y4,y5,y6,y7,y8. y9), axis=0)
 print(y)
 #print(x.shape)
 

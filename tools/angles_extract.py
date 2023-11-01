@@ -3,7 +3,7 @@ import os
 import cv2 
 import numpy as np
 
-path = '../newData/jab/bad/rotation_lack'
+path = '../newData/straight_right/good/angles'
 count = 0
 vid_count = 0
 
@@ -14,7 +14,7 @@ for idx, vid in enumerate(os.listdir(path)):
     cap = cv2.VideoCapture(vid_path)
 
     vid_count += 1
-    os.makedirs(f'../newData/jab/bad/angles/rotation_lack/vid_{vid_count}')
+    os.makedirs(f'../newData/straight_right/good/angles/vid_{vid_count}')
 
     while cap.isOpened(): 
         ret, frame = cap.read()
@@ -28,7 +28,7 @@ for idx, vid in enumerate(os.listdir(path)):
         
         cv2.imshow('Feed', newFrame)
         print(angles)
-        np.save(f'../newData/jab/bad/angles/rotation_lack/vid_{vid_count}/f_{count}.npy', angles)
+        np.save(f'../newData/straight_right/good/angles/vid_{vid_count}/f_{count}.npy', angles)
         count += 1
   
         if cv2.waitKey(1) == ord('q'):

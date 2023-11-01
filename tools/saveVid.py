@@ -20,16 +20,18 @@ count = 0
 fourcc = cv.VideoWriter_fourcc(*'XVID')
 
 num_videos = 50
+path = '../newData/jab/good/angles'
+#C:\Users\ander\OneDrive\Desktop\FitTech-LSTM\newData\jab\good\angles
 
 for x in range(num_videos):
     #out = cv.VideoWriter(f'../newData/jab/good/angles/f_{x}.avi', fourcc, 20.0, (640,  480))
-    os.makedirs(f'../newData/upper_cut/bad/angles/upper_rotation_lack/vid_{x+50}')
+    os.makedirs(f'{path}/vid_{x+101}')
     #cv.waitKey(0) # wait 2 seconds for user to reset
     winsound.Beep(1000,500)
     for y in range(40):
         ret, frame = cap.read()
         angles, newFrame = drawSkeleton(frame)
-        np.save(f'../newData/upper_cut/bad/angles/upper_rotation_lack/vid_{x+50}/f_{y}.npy', angles)
+        np.save(f'{path}/vid_{x+101}/f_{y}.npy', angles)
 
         print(f'Frame#{y}: ', angles)
         if not ret:
@@ -43,6 +45,7 @@ for x in range(num_videos):
  
         if cv.waitKey(1) == ord('q'):
             break
+
 
     
  
