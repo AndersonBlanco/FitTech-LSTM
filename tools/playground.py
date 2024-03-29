@@ -16,7 +16,7 @@ model = keras.saving.load_model('lstm.h5')
 
 num_videos = 1
 cap = cv2.VideoCapture(0)
-out = cv2.VideoWriter('output.avi', -1, 20.0, (frame.shape[0], frame.shape[1]))
+#out = cv2.VideoWriter('output.avi', -1, 20.0, (frame.shape[0], frame.shape[1]))
 
 def label(angles):
     pred_y = np.array(model.predict(angles))
@@ -39,7 +39,7 @@ def label(angles):
     elif idx == 7:
         return 'bad upper cut - rotation lack', pred_y
     elif idx == 8:
-        return 'good straight', predy
+        return 'good straight', pred_y
     
 
 
@@ -85,7 +85,7 @@ while True:
         
  
     cv2.imshow("Frame", newFrame)
-    out.write(newFrame)
+    #out.write(newFrame)
 
     if cv2.waitKey(1) == ord('q'):
         break
