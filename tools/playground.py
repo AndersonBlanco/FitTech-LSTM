@@ -10,11 +10,13 @@ import numpy as np
 import cv2 
 import winsound
 from vision import drawSkeleton
+import time 
 
 model = keras.saving.load_model('lstm.h5')
 
 num_videos = 1
 cap = cv2.VideoCapture(0)
+out = cv2.VideoWriter('output.avi', -1, 20.0, (frame.shape[0], frame.shape[1]))
 
 def label(angles):
     pred_y = np.array(model.predict(angles))
@@ -45,11 +47,24 @@ def label(angles):
 
 f = 0
 a = []
+text = 'null'
+
+prevTime = 0
+newTime = 0 
+
 while True:
     ret, frame = cap.read()
+
+    newTime = time.time()
+    fps = 1/(newTime-prevTime) 
+    prevTime = newTime 
+
+    print(fps)
+
     if not ret:
         print("Can't receive frame (stream end?). Exiting ...")
         break
+
     angles, newFrame = drawSkeleton(frame)
     
     if f != 40:
@@ -59,16 +74,18 @@ while True:
         winsound.Beep(1000,500)
         a = np.array(a)
         a.resize(1,40,8)
-        s, p = label(a)
-        #cv2.putText(frame, p, (10,10), cv2.FONT_HERSHEY_COMPLEX, 2, (0,255,0), 2, cv2.LINE_AA)
-        print(s)
-        print(p)
+        _string, prediction = label(a)
+        text = _string 
+        print(_string)
+        print(prediction)
         a = []
         f = 0
+
+    cv2.putText(frame, text, ( 50,50 ), cv2.FONT_HERSHEY_COMPLEX, 1, (0,0,204), 1)
         
  
-    cv2.imshow('frame', newFrame)
-
+    cv2.imshow("Frame", newFrame)
+    out.write(newFrame)
 
     if cv2.waitKey(1) == ord('q'):
         break

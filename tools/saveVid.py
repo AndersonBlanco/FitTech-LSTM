@@ -20,19 +20,19 @@ count = 0
 fourcc = cv.VideoWriter_fourcc(*'XVID')
 
 num_videos = 50
-path = '../newData/jab/good/angles'
+path = '../newData/videos/v1.avi'
 #C:\Users\ander\OneDrive\Desktop\FitTech-LSTM\newData\jab\good\angles
 
 for x in range(num_videos):
     #out = cv.VideoWriter(f'../newData/jab/good/angles/f_{x}.avi', fourcc, 20.0, (640,  480))
-    os.makedirs(f'{path}/vid_{x+101}')
-    #cv.waitKey(0) # wait 2 seconds for user to reset
+   #os.makedirs(f'{path}/vid_{x+101}')
+    cv.waitKey(2000) # wait 2 seconds for user to reset
     winsound.Beep(1000,500)
     for y in range(40):
         ret, frame = cap.read()
         angles, newFrame = drawSkeleton(frame)
-        np.save(f'{path}/vid_{x+101}/f_{y}.npy', angles)
-
+        #np.save(f'{path}/vid_{x+101}/f_{y}.npy', angles)
+        #cv.imwrite(f'../newData/imgs/img_{x}.png', newFrame)
         print(f'Frame#{y}: ', angles)
         if not ret:
             print("Can't receive frame (stream end?). Exiting ...")

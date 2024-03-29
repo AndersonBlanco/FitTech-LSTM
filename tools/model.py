@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
-
+p
 def getX_getY(path, label):
     x = []
     y = []
@@ -48,7 +48,8 @@ model = keras.Sequential()
 # output embedding dimension of size 64.
 
 # Add a LSTM layer with 128 internal units.
-model.add(tf.keras.layers.LSTM(128, return_sequences=True, input_shape=(40,8)))
+model.add(tf.keras.Input((40, 8)))
+model.add(tf.keras.layers.LSTM(128, return_sequences=True))
 model.add(tf.keras.layers.LSTM(64, return_sequences=True))
 model.add(tf.keras.layers.LSTM(32))
 
@@ -63,7 +64,7 @@ def train_and_save(x, y, xt, xy):
     #callbacks_list = [checkpoint]
     model.fit(x, y, batch_size=16, epochs = 50)
 
-    model.save('lstm.h5')
+    #model.save('lstm.h5')
 
     '''pred_y= model.predict(xt)
     pred_fixed=[]
