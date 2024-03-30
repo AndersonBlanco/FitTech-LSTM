@@ -1,7 +1,12 @@
 .App {
   text-align: center;
+  font-size: 1rem;
+  
 }
 
+.App *{
+  text-transform: uppercase;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +40,137 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* constants*/
+.row{
+  display: inline-flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.column{
+  display: block;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+/*Header*/
+
+#header{
+  text-align: center;
+  align-items: center;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 2.5rem;
+  background-color: none;
+  padding: 0rem;
+}
+
+.dot{
+  height: .35rem;
+  width: .35rem;
+  background-color: black; 
+  border-radius: 1rem;
+
+}
+
+#nav_button{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: .25rem;
+  grid-column: 1;
+  position: relative;
+  left: 1rem;
+   cursor:url("./media/imgs/boxing_glove.png"),pointer;
+   height: fit-content;
+    background-color: none;
+  width: fit-content;
+}
+ 
+
+#header_title{
+  cursor: url("./media/imgs/boxing_glove.png"),pointer;
+  font-size: 1.5rem;
+}
+
+#auth_in{
+  outline: none;
+  border: none;
+  font-size: .5rem;
+  color: white;
+  background-color: black;
+  border-radius: 1rem;
+  width: fit-content;
+  padding: .5rem 1rem;
+  position: relative;
+  right: -16rem; /* -30em; */
+  cursor:  url("./media/imgs/boxing_glove.png"),pointer;
+}
+
+
+/*pg1*/
+#pg1{
+ 
+  height: 100vh;
+}
+#header_img{
+  height: 15rem;
+ position: relative;
+ right: 0rem;
+ top: 2.5rem;
+ grid-column: 2;
+ grid-row: 1;
+}
+
+#motive_words{ 
+  position: relative;
+  top: 5rem;
+  text-decoration: underline rgba(0,0,0, .65) solid; 
+  gap: 10rem;
+}
+
+#motive_words *{
+  cursor: url("./media/imgs/boxing_glove.png"),pointer;
+  font-size: 1.5rem;
+  transition-duration: .5s;
+}
+#motive_words a{
+  text-decoration: none;
+  color: black;
+ 
+}
+
+#motive_words *:hover{
+  transform: translateY(-1rem);
+  transition-duration: .5s;
+  transition-timing-function: ease-in-out;
+}
+
+#motive_sentence{
+  font-size: 1.75rem;
+  position: relative;
+  top: 5.75rem;
+  grid-column: 1;
+  grid-row: 1; 
+}
+
+#motive_sentence_and_header_img{
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-columns: auto;
+top: -1.5rem;
+position: relative;
+}
+
+/* pg2 */
+#pg2{
+  height: 100vh;
+ 
 }
