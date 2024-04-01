@@ -1,12 +1,32 @@
 import React, {useState} from "react";
 import "../App.css"; 
+import { get_item } from "../tools/localStorage";
+import Close_Icon from "../media/svgs/close_icon"; 
+import { Link } from "react-router-dom"; 
 
 export default function Header(){
-   const Nav_Button = () =>{
-     let dot = <div className = "dot"></div>;
+     //onscroll windows event
+
+   const [universal_scroll_pos, set_universal_scroll_pos] = useState(window.scrollY/window.innerHeight);
+   window.onscroll = () =>{
+    set_universal_scroll_pos(window.scrollY/window.innerHeight);
+    console.log(universal_scroll_pos)
+   }
+
+   
+   const [header_Text_Color, set_header_Text_Color] = useState(0.82 < universal_scroll_pos < 1.44? "red" : "blue");  
+   const [toggle, setToggle] = useState(false); 
+   let start = 1.02, end = 4.08; 
+
+   const color_theme_limits = (start, end, c1, c2) =>{
+    return (start <= universal_scroll_pos && universal_scroll_pos <= end? c1 : c2)
+  }
+   const Nav_Button = (props) =>{
+     let dot = <div className = "dot" style = {{backgroundColor: color_theme_limits(start, end, "white", "black")}}></div>;
      let arr = new Array(9).fill(0); 
      return(
-       <div id = "nav_button">
+      <Link to="../pages/test_out.js">
+       <div id = "nav_button" onClick = {() => setToggle(true)}>
        {dot}
        {dot}
        {dot}
@@ -17,14 +37,44 @@ export default function Header(){
        {dot}
        {dot}
        </div>
+       </Link>
      )
     }
-  
+
+  //style = {{color: get_item("CURRENT_PAGE")=="learn"? "black" : "white"}}
+
+  const Aside_NAv = () =>{
     return(
-        <div id = "header">
-            <Nav_Button/>
-            <h1 id = "header_title">FitTech</h1>
-            <button id = "auth_in">signup/login</button>
-        </div>
+      <div id = "opaque_overlay" style = {{display: toggle? "absolute" : "none"}}>
+        <div id = "aside_nav">
+        <Close_Icon 
+        onClick = {() => {setToggle(false)}}
+        height = {"1.5rem"} 
+        id = "svg_close_icon" 
+        style = {{
+          transform: "rotateZ(180deg)",
+          position: "relative",
+          left: "-3.5rem",
+          top: "1.5rem",
+          cursor: "url('./media/imgs/boxing_glove.png'),pointer"
+        }}
+     
+        />
+        <ul>
+          <li><a href = "#test_out">Try Out Our Prpoduct</a></li>
+        </ul>
+      </div>
+      </div>
+
     )
+  }
+    return [(
+        <div id = "header" >            
+        <Aside_NAv/>
+            <Nav_Button/>
+            <h1 id = "header_title" style = {{color: color_theme_limits(start, end, "white","black") }}>FitTech</h1>
+            <button id = "auth_in" style = {{color: color_theme_limits(start, end, "black", "white"), backgroundColor: color_theme_limits(start, end, "white", "black") }}>signup/login</button>
+
+        </div>
+    ), Nav_Button]
 }
