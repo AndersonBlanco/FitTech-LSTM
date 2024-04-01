@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "../App.css"; 
 import { get_item } from "../tools/localStorage";
-import Close_Icon from "../media/svgs/close_icon"; 
+import CloseIcon from "../media/svgs/close_icon"; 
 import { Link } from "react-router-dom"; 
 
 export default function Header(){
@@ -21,7 +21,7 @@ export default function Header(){
    const color_theme_limits = (start, end, c1, c2) =>{
     return (start <= universal_scroll_pos && universal_scroll_pos <= end? c1 : c2)
   }
-   const Nav_Button = (props) =>{
+   const NavButton = (props) =>{
      let dot = <div className = "dot" style = {{backgroundColor: color_theme_limits(start, end, "white", "black")}}></div>;
      let arr = new Array(9).fill(0); 
      return(
@@ -43,11 +43,11 @@ export default function Header(){
 
   //style = {{color: get_item("CURRENT_PAGE")=="learn"? "black" : "white"}}
 
-  const Aside_NAv = () =>{
+  const AsideNav = () =>{
     return(
       <div id = "opaque_overlay" style = {{display: toggle? "absolute" : "none"}}>
         <div id = "aside_nav">
-        <Close_Icon 
+        <CloseIcon 
         onClick = {() => {setToggle(false)}}
         height = {"1.5rem"} 
         id = "svg_close_icon" 
@@ -68,13 +68,13 @@ export default function Header(){
 
     )
   }
-    return [(
+    return (
         <div id = "header" >            
-        <Aside_NAv/>
-            <Nav_Button/>
+        <AsideNav/>
+            <NavButton/>
             <h1 id = "header_title" style = {{color: color_theme_limits(start, end, "white","black") }}>FitTech</h1>
             <button id = "auth_in" style = {{color: color_theme_limits(start, end, "black", "white"), backgroundColor: color_theme_limits(start, end, "white", "black") }}>signup/login</button>
 
         </div>
-    ), Nav_Button]
+    )
 }

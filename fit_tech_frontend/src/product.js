@@ -6,7 +6,7 @@ function App() {
     const webCam_ref = useRef(null); 
   
     const [time, setTime] = useState(0),
-          [_break, set_break] = useState(time == 5? true : false),
+          [_break, set_break] = useState(time === 5? true : false),
           [debugtext, steDebugText] = useState(`${_break}`),
           [img_rgb_array, set_img_rgb_array] = useState([]),
           [img_src, set_img_src] = useState(" "),
@@ -31,14 +31,14 @@ function App() {
   set_imgData(ctx_data.data); 
    //console.log(ctx_data)
    //console.log(img_rgb_array.length)
-    }, [imgData])
+    }, [])
   
     return <canvas ref = {canvas_ref} width={340} height = {250} />
   }
   
   useEffect(() =>{  
     var storeFrame = setInterval(async () =>{
-    if(time == 40){
+    if(time === 40){
       await delay(500) //delay 5s
       setTime(0); //reset timer
     }else{
@@ -58,7 +58,7 @@ function App() {
     clearInterval(storeFrame); 
   }
    
-  }, [time, img_rgb_array, img_src, webCam_ref]);
+  }, [time, img_rgb_array, img_src, webCam_ref,imgData]);
   
    
   

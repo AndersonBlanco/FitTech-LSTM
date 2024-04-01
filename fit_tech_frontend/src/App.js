@@ -40,20 +40,11 @@ const Motive_words_latter = () =>{
 
 function App() { 
  //set_item("CURRENT_PAGE", "landing")
- let Nav_Button = Header[1]; 
  
-  const Aside_NAv = () =>{
-    return(
-      <div id = "aside_nav">
-        <ul>
-          <li><a href = "#try_out">Try Out Our Prpoduct</a></li>
-        </ul>
-      </div>
-    )
-  }
+
   return (
     <div className="App">
-      {Header()[0]}
+  
       <div id = "pg1">
         <div className = 'column'> 
         <div className = "row" id = "motive_sentence_and_header_img">
