@@ -1,3 +1,8 @@
+:root{
+  --section-height: 32rem;
+  --section-width: 52rem;
+}
+
 .App {
   text-align: center;
   font-size: 1rem;
@@ -6,6 +11,7 @@
 
 .App *{
   text-transform: uppercase;
+  transition-duration: .5s;
 }
 .App-logo {
   height: 40vmin;
@@ -67,6 +73,10 @@
   grid-template-rows: 2.5rem;
   background-color: none;
   padding: 0rem;
+  position:fixed;
+  background-color: none;
+  width: 100%;
+  z-index: 100;
 }
 
 .dot{
@@ -98,13 +108,13 @@
 #header_title{
   cursor: url("./media/imgs/boxing_glove.png"),pointer;
   font-size: 1.5rem;
+  transition-duration: .5s;
 }
 
 #auth_in{
   outline: none;
   border: none;
   font-size: .5rem;
-  color: white;
   background-color: black;
   border-radius: 1rem;
   width: fit-content;
@@ -115,10 +125,55 @@
 }
 
 
+
+/* aside nav */
+
+#opaque_overlay{
+  background-color: rgba(0,0,0,.15);
+  position: fixed; 
+  height: 100vh;
+  width: 100vw;
+  z-index: 100; 
+  top: 0rem;
+ 
+}
+#aside_nav{
+  background-color: rgb(255, 255, 255);
+  width: 10rem;
+  height: 100vh;
+  border-right: solid rgba(0,0,0, .65); 
+  position: absolute;
+  top: 0vh;
+  
+
+}
+
+#aside_nav ul{
+  list-style-type: none;
+  width: 100%;
+  position: relative;
+  left: -1.75rem;
+  padding-block: 2rem;
+}
+#aside_nav ul li a{
+  text-decoration: none;
+  color: black;
+  text-decoration: underline solid rgba(0,0,0, .65);
+  font-size: .75rem;
+
+  cursor: url("./media/imgs/boxing_glove.png"),pointer;
+
+}
+
+#svg_close_icon{
+  transform: rotateZ(180deg)
+}
+
+
 /*pg1*/
 #pg1{
  
-  height: 100vh;
+  height: var(--section-height);
 }
 #header_img{
   height: 15rem;
@@ -131,7 +186,7 @@
 
 #motive_words{ 
   position: relative;
-  top: 5rem;
+  top: 9rem;
   text-decoration: underline rgba(0,0,0, .65) solid; 
   gap: 10rem;
 }
@@ -165,12 +220,201 @@
 display: grid;
 grid-template-columns: repeat(2, 1fr);
 grid-template-columns: auto;
-top: -1.5rem;
+top: 1.5rem;
 position: relative;
 }
 
+/* pg + * */
+.pg{
+    height: var(--section-height);
+
+  color: white;
+
+}
+
+.pg_text_title{
+  text-decoration: underline solid rgba(255, 255, 255, 0.65);
+  cursor: url("./media/imgs/boxing_glove.png"),pointer;
+}
+
+.pg_text{
+  font-size: .75rem;
+  width: 34rem;
+  position: relative;
+  right: -5rem;
+  top: 2.5rem;
+  line-height:1.5rem;
+  text-align:left;
+}
 /* pg2 */
 #pg2{
-  height: 100vh;
- 
+  background-color: black;
 }
+
+.pg_img_text_column{
+    position: relative;
+  top: 4.5rem;
+  left:-1rem;
+}
+
+#learn_img_text_column{}
+
+#learn_title{}
+
+#learn_text{
+color: white;
+}
+
+#learn_row{}
+
+/* pg3*/
+#pg3{
+  background-color: black;
+}
+
+#apply_row{
+  flex-direction: row-reverse;
+}
+#pg3_img_text_column{
+  left: 5rem; /*reversed row mdofies/also reverses refernce directions in which position relative movement is applied */ 
+}
+
+#apply_text{
+  left: -1rem; /*reversed row mdofies/also reverses refernce directions in which position relative movement is applied */ 
+}
+
+#apply_img{
+  transform:rotateY(180deg); 
+}
+
+/* pg4 */
+#pg4{
+  background-color: black;
+  justify-content: center;
+}
+
+#pg4 *{
+  position: relative;
+  top: 2.5rem;
+}
+
+#develop_img_row{
+ column-gap: 5rem;
+ /*
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ grid-template-rows: auto; 
+ /**/
+ padding-inline: 5rem;
+ text-align:center;
+ align-items:center;
+ justify-content: center;
+ position: relative;
+
+
+}
+#develop_img_row img{
+  height: 7rem;
+}
+
+#develop_text{
+font-size:.75rem;
+line-height:1.5rem;
+padding-inline: 5rem;
+}
+
+/* test_out page */ 
+ #test_out{
+  background-color: white; 
+  height: var(--section-height); 
+  text-align:center;
+  align-items: center;
+  justify-content: center;
+   
+ }
+
+ #try_out_button{
+  background-color: black; 
+  color: white;
+  border: none;
+  outline: none; 
+  border-radius: 1rem;
+  padding: .5rem 1rem;
+  font-size: 1.25rem;
+  position: relative;
+  top: 3rem;
+  cursor: url("./media/imgs/boxing_glove.png"),pointer;
+ }
+ 
+
+ #img_row{
+  column-gap: 10rem;
+  width: 100%; 
+  background-color: none;
+  margin-top: 4rem;
+  transition-duration: 1s;
+  
+ }
+
+ #img_row img{
+  height: 17rem;
+ }
+
+
+ /* footer */
+ #footer{
+  background-color: black; 
+ display: flex;
+ flex-direction: column;
+ text-align: center;
+ justify-content: center;
+ align-items: center;
+ color: white;
+ padding-block: 2rem;
+ 
+ }
+#footer ul{
+  list-style-type: none;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  row-gap: .5rem;
+}
+#footer h1{
+  font-size: 1rem;
+}
+#footer li{
+  font-size: .75rem;
+  display: flex;
+  flex-direction: row;
+   text-align: center;
+ justify-content: center;
+ align-items: center;
+}
+
+#footer .row{
+ justify-content: space-evenly;
+ column-gap: 10rem;
+  
+}
+ #footer .column{
+  text-decoration: underline solid rgba(255, 255, 255, 0.65);
+
+ }
+
+ #footer #stay_updated #ul li{ 
+ 
+  justify-content: right;
+ 
+ }
+
+ #footer #discover_more_abt_us #ul li{ 
+ 
+  justify-content: left;
+ 
+ }
+
+ #footer #copyright_sent{
+  margin-top: 2.5rem;
+ }
