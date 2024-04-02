@@ -1,10 +1,10 @@
 import "../App.css"; 
 import React, {useState} from "react";
 import { MotionAnimate } from 'react-motion-animate'; 
-import instagram_img from "../media/imgs/instagram.png";
-import x_twitter_img from "../media/imgs/x_twitter.png";
+import instagram_img from "../pages/media/imgs/instagram.png";
+import x_twitter_img from "../pages/media/imgs/x_twitter.png";
 
-import facebook_img from "../media/imgs/facebook.png";
+import facebook_img from "../pages/media/imgs/facebook.png";
 export default function Footer(){
     const leftList= (
         <div className = "column" id = "stay_updated">

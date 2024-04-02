@@ -98,7 +98,7 @@
   grid-column: 1;
   position: relative;
   left: 1rem;
-   cursor:url("./media/imgs/boxing_glove.png"),pointer;
+   cursor:url("./pages/media/imgs/boxing_glove.png"),pointer;
    height: fit-content;
     background-color: none;
   width: fit-content;
@@ -106,7 +106,7 @@
  
 
 #header_title{
-  cursor: url("./media/imgs/boxing_glove.png"),pointer;
+  cursor: url("./pages/media/imgs/boxing_glove.png"),pointer;
   font-size: 1.5rem;
   transition-duration: .5s;
 }
@@ -121,7 +121,7 @@
   padding: .5rem 1rem;
   position: relative;
   right: -16rem; /* -30em; */
-  cursor:  url("./media/imgs/boxing_glove.png"),pointer;
+  cursor:  url("./pages/media/imgs/boxing_glove.png"),pointer;
 }
 
 
@@ -173,7 +173,7 @@
   text-decoration: underline solid rgba(0,0,0, .45);
   font-size: .7rem;
   width: 100%;
-  cursor: url("./media/imgs/boxing_glove.png"),pointer;
+  cursor: url("./pages/media/imgs/boxing_glove.png"),pointer;
   
 
 }
@@ -209,7 +209,7 @@
 }
 
 #motive_words *{
-  cursor: url("./media/imgs/boxing_glove.png"),pointer;
+  cursor: url("./pages/media/imgs/boxing_glove.png"),pointer;
   font-size: 1.5rem;
   transition-duration: .5s;
 }
@@ -251,7 +251,7 @@ position: relative;
 
 .pg_text_title{
   text-decoration: underline solid rgba(255, 255, 255, 0.65);
-  cursor: url("./media/imgs/boxing_glove.png"),pointer;
+  cursor: url("./pages/media/imgs/boxing_glove.png"),pointer;
 }
 
 .pg_text{
@@ -360,7 +360,7 @@ padding-inline: 5rem;
   font-size: 1.25rem;
   position: relative;
   top: 3rem;
-  cursor: url("./media/imgs/boxing_glove.png"),pointer;
+  cursor: url("./pages/media/imgs/boxing_glove.png"),pointer;
  }
  
 
@@ -434,4 +434,10 @@ padding-inline: 5rem;
 
  #footer #copyright_sent{
   margin-top: 2.5rem;
+ }
+
+ /*Product */
+ #Product{
+  height: var(--section-height);
+  padding-block: 2rem;
  }

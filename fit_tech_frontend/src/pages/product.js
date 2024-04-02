@@ -1,8 +1,9 @@
-import './App.css';
+import '../App.css';
 import {useState, useEffect, useRef} from "react"; 
+import { Portal } from 'react-motion-animate';
 import WebCam from "react-webcam"; 
 
-function App() {
+function Product() {
     const webCam_ref = useRef(null); 
   
     const [time, setTime] = useState(0),
@@ -65,7 +66,7 @@ function App() {
   
    
     return (
-      <div className="App">
+      <div id="Product">
       
         <h2>DebugText: {debugtext}</h2>
         <h2>Time: {time}</h2>
@@ -86,5 +87,5 @@ function App() {
     );
   }
   
-  export default App;
+  export default Product;
   

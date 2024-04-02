@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import "../App.css"; 
 import { get_item } from "../tools/localStorage";
-import CloseIcon from "../media/svgs/close_icon"; 
-import { Link } from "react-router-dom"; 
+import CloseIcon from "../pages/media/svgs/close_icon.js"; 
+import { Link,  } from "react-router-dom"; 
 
 export default function Header(){
      //onscroll windows event
@@ -59,10 +59,11 @@ export default function Header(){
         }}
      
         />
-        <ul>
+        <ul>         
+          <li><Link to="/">Home</Link></li>
           <li><a href = "#test_out">Try Out Our Prpoduct</a></li>
-          <li><a onClick = {() => {}}>Knowledge</a></li>
-          <li><a href = "#test_out">Guded Workout</a></li>
+          <li><Link to="/product">Knowledge</Link></li>
+          <li><Link to="/product">Guded Workout</Link></li>
         </ul>
       </div>
       </div>
