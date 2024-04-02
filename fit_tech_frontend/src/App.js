@@ -44,7 +44,7 @@ function App() {
 
   return (
     <div className="App">
-  
+    <Header/>
       <div id = "pg1">
         <div className = 'column'> 
         <div className = "row" id = "motive_sentence_and_header_img">

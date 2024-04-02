@@ -21,11 +21,10 @@ export default function Header(){
    const color_theme_limits = (start, end, c1, c2) =>{
     return (start <= universal_scroll_pos && universal_scroll_pos <= end? c1 : c2)
   }
-   const NavButton = (props) =>{
+   const NavButton = () =>{
      let dot = <div className = "dot" style = {{backgroundColor: color_theme_limits(start, end, "white", "black")}}></div>;
-     let arr = new Array(9).fill(0); 
      return(
-      <Link to="../pages/test_out.js">
+ 
        <div id = "nav_button" onClick = {() => setToggle(true)}>
        {dot}
        {dot}
@@ -37,7 +36,7 @@ export default function Header(){
        {dot}
        {dot}
        </div>
-       </Link>
+   
      )
     }
 
