@@ -16,7 +16,7 @@ export default function Header(){
    
    const [header_Text_Color, set_header_Text_Color] = useState(0.82 < universal_scroll_pos < 1.44? "red" : "blue");  
    const [toggle, setToggle] = useState(false); 
-   let start = 1.02, end = 4.08; 
+   let start = 1.02, end = 3.97; //was 4.08
 
    const color_theme_limits = (start, end, c1, c2) =>{
     return (start <= universal_scroll_pos && universal_scroll_pos <= end? c1 : c2)
@@ -61,6 +61,8 @@ export default function Header(){
         />
         <ul>
           <li><a href = "#test_out">Try Out Our Prpoduct</a></li>
+          <li><a onClick = {() => {}}>Knowledge</a></li>
+          <li><a href = "#test_out">Guded Workout</a></li>
         </ul>
       </div>
       </div>

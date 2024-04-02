@@ -154,15 +154,32 @@
   position: relative;
   left: -1.75rem;
   padding-block: 2rem;
+ justify-content: center;
+ align-items: center;
+  text-align:right;
+  width: 100%;
+  
+}
+
+#aside_nav ul li{
+
+  margin-block: .5rem;
+  
+  
 }
 #aside_nav ul li a{
   text-decoration: none;
   color: black;
-  text-decoration: underline solid rgba(0,0,0, .65);
-  font-size: .75rem;
-
+  text-decoration: underline solid rgba(0,0,0, .45);
+  font-size: .7rem;
+  width: 100%;
   cursor: url("./media/imgs/boxing_glove.png"),pointer;
+  
 
+}
+
+#aside_nav ul li a:hover{
+  text-decoration-color: rgba(0,0,0, 1)
 }
 
 #svg_close_icon{

@@ -71,6 +71,7 @@ function App() {
         <h2>Time: {time}</h2>
   
         <WebCam
+        id = "product"
         ref = {webCam_ref}
         height={500}
         width={500}
