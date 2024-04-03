@@ -1,5 +1,7 @@
 FROM python 
 
-ADD main.py . 
+COPY main.py . 
+
+WORKDIR ./docker_test .
 
 CMD ['python', './main.py']

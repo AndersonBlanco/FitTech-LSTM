@@ -1,2 +1,2 @@
-def test(s):
-    return f"Test Text: {s}"
+def test():
+    return f"Test Complete"
