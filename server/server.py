@@ -1,13 +1,12 @@
 #import mediapipe as mp
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 app = Flask(__name__)
 
 
 
 @app.route('/test', methods = ['GET'])
 def drawskeleton():
-    r = {"data": "Hello Universe", "headers": {"Access-Control-Allow-Origin": "*"}}
-    return r
+    render_template("build")
 
-if __name__ == "__main__":
-    app.run(debug=True) 
+
+app.run(port=3000)
