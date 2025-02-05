@@ -3,10 +3,11 @@ import cv2
 #import PIL 
 #from PIL import Image, ImageOps
 import numpy as np
-
+import keras 
 import time 
 
-#from model import predict
+
+
 
 mp_drawing = mp.solutions.drawing_utils 
 mp_pose = mp.solutions.pose 
@@ -228,6 +229,11 @@ def drawSkeleton(frame):
     return angles, newFrame
 
 
+def predict(angles):
+    model = keras.saving.load_model('lstm.h5')
+    prediction = model.predict(angles)
+    return prediction
+
 def runPoseEstimation():
     cap = cv2.VideoCapture(0) #('../newData/imgs/img_4.png')
     out = cv2.VideoWriter('output.avi', -1, 20.0, (640,480))
@@ -242,10 +248,12 @@ def runPoseEstimation():
             
             out.write(newFrame)
             cv2.imshow('FitTech', newFrame)
-            print(angles)
+            #print(angles)
 
         except:
             out.write(frame)
+            frame = cv2.putText(frame, "Please move full body into frame", (25, 25), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,0), 2, cv2.LINE_AA)
+
             cv2.imshow('FitTech', frame)
            
 

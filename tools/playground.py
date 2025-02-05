@@ -52,44 +52,46 @@ text = 'null'
 prevTime = 0
 newTime = 0 
 
-while True:
-    ret, frame = cap.read()
+def runPlayground():
 
-    newTime = time.time()
-    fps = 1/(newTime-prevTime) 
-    prevTime = newTime 
+    while True:
+        ret, frame = cap.read()
 
-    print(fps)
+        newTime = time.time()
+        fps = 1/(newTime-prevTime) 
+        prevTime = newTime 
 
-    if not ret:
-        print("Can't receive frame (stream end?). Exiting ...")
-        break
+        #print(fps)
 
-    angles, newFrame = drawSkeleton(frame)
+        if not ret:
+            print("Can't receive frame (stream end?). Exiting ...")
+            break
+
+        angles, newFrame = drawSkeleton(frame)
     
-    if f != 40:
-        f += 1
-        a.append(angles)
-    else:
-        winsound.Beep(1000,500)
-        a = np.array(a)
-        a.resize(1,40,8)
-        _string, prediction = label(a)
-        text = _string 
-        print(_string)
-        print(prediction)
-        a = []
-        f = 0
-
-    cv2.putText(frame, text, ( 50,50 ), cv2.FONT_HERSHEY_COMPLEX, 1, (0,0,204), 1)
+        if f != 40:
+            f += 1
+            a.append(angles)
+        else:
+            winsound.Beep(1000,500)
+            a = np.array(a)
+            a.resize(1,40,8)
+            _string, prediction = label(a)
+            text = _string 
+            #print(_string)
+            #print("prediction: ", _string)
+            a = []
+            f = 0
+            newFrame = cv2.putText(newFrame, prediction, ( 10,10 ), cv2.FONT_HERSHEY_COMPLEX, 1, (0,0,204), 1)
         
- 
-    cv2.imshow("Frame", newFrame)
-    #out.write(newFrame)
 
-    if cv2.waitKey(1) == ord('q'):
-        break
+    
+        cv2.imshow("Frame", cv2.flip(newFrame))
+        #out.write(newFrame)
+
+        if cv2.waitKey(1) == ord('q'):
+            break
     
  
-cap.release()
-cv2.destroyAllWindows()
+    cap.release()
+    cv2.destroyAllWindows()

@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
-p
+
 def getX_getY(path, label):
     x = []
     y = []
@@ -86,7 +86,7 @@ def predict(angles):
 
     print(prediction)
 
-print('starting.....')
+#print('starting.....')
 
 #0 = good
 #1 = bad jab - knee_lvl_
@@ -153,14 +153,14 @@ y = np.concatenate((y,y2,y3, y4,y5,y6,y7,y8. y9), axis=0)
 print(y)
 #print(x.shape)
 
-x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=.2)
+#x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=.2)
 
-print(x_train.shape)
+#print(x_train.shape)
 #print(x_train.shape)
 
 #jab - bad - knee_lvl
 
-train_and_save(x_train, y_train, x_test, y_test)
+#train_and_save(x_train, y_train, x_test, y_test)
 
 
 #predict(x_test[0])
